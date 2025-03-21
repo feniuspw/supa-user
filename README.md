@@ -1,4 +1,4 @@
-# SupaUser 🚀
+# SupaUser 🏋️‍♂️
 
 **SupaUser** is a lightweight microservice built with **Python 3.12** and **FastAPI**, designed to centralize and streamline user authentication and JWT management via **Supabase**. It offers a scalable, secure, and consistent approach to handling user authentication across multiple projects, adapting to diverse requirements with its modular architecture.
 

@@ -175,3 +175,5 @@ cython_debug/
 
 dev.Dockerfile
 dev.docker-compose.yaml
+
+.idea

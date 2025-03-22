@@ -6,6 +6,7 @@ from repository.user_repository import UserRepository
 
 
 class SupabaseRepositoryAdapter(UserRepository):
+
     def __init__(self):
         url = os.environ.get("SUPABASE_URL")
         key = os.environ.get("SUPABASE_API_KEY")
@@ -35,3 +36,16 @@ class SupabaseRepositoryAdapter(UserRepository):
         except Exception as e:
             raise SupabaseLoginException(f"Failed Loging in to Supabase using phone and password: {e}")
 
+
+    def login_with_id_token(self, provider: str, token: str):
+        """
+        Allows signing in with an OIDC ID token.
+        The authentication provider used should be enabled and configured.
+        """
+        try:
+            return self.client.auth.sign_in_with_id_token({
+                "provider": provider,
+                "token": token
+            })
+        except Exception as e:
+            raise SupabaseLoginException(f"Failed Logging in to Supabase using provider {provider}: {e}")

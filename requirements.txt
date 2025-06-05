@@ -1,6 +1,7 @@
 fastapi==0.115.11
 pydantic==2.10.6
 pydantic[email]
+pydantic-settings==2.2.1
 pydantic_core==2.27.2
 pytest==8.3.5
 pytest-cov==6.0.0

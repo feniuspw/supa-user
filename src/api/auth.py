@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, status
-from models.user import UserEmailPasswordAuth, LoginResponse
+from models.user import UserEmailPasswordAuth, LoginResponse, UserSSOAuth, SSOLoginResponse
 from adapters.supabase_adapter import SupabaseRepositoryAdapter
 from services.auth_service import AuthService
 
@@ -19,6 +19,16 @@ async def login_with_email_and_password(credentials: UserEmailPasswordAuth):
     except Exception as e:
         print(e)
         # Aqui você pode logar a exceção se quiser: print(e) ou logger.error(e)
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Internal Server Error")
+
+
+@router.post("/login-with-sso", summary="Login with Gmail SSO", response_model=SSOLoginResponse)
+async def login_with_sso(credentials: UserSSOAuth):
+    try:
+        response = AuthService(repository).login_with_sso(credentials)
+        return SSOLoginResponse(redirect_url=response.get("url"))
+    except Exception as e:
+        print(e)
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Internal Server Error")
 
 

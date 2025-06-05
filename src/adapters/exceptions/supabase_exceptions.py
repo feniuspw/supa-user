@@ -5,3 +5,4 @@ class SupabaseException(Exception):
 class SupabaseLoginException(SupabaseException):
     def __init__(self, message: str = "Login failed with Supabase"):
         super().__init__(message)
+

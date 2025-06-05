@@ -15,6 +15,10 @@ class UserSSOAuth(BaseModel):
     provider: str
     redirect_to: Optional[str] = None
 
+
+class SSOLoginResponse(BaseModel):
+    redirect_url: str
+
 class LoginResponse(BaseModel):
     user_id: str
     access_token: str

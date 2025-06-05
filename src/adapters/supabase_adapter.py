@@ -55,3 +55,15 @@ class SupabaseRepositoryAdapter(UserRepository):
             })
         except Exception as e:
             raise SupabaseLoginException(f"Failed Logging in to Supabase using provider {provider}: {e}")
+
+    def login_with_oauth(self, provider: str, redirect_to: str | None = None):
+        """Log in using OAuth provider returning the redirect URL."""
+        try:
+            options = {"provider": provider}
+            if redirect_to:
+                options["redirect_to"] = redirect_to
+            return self.client.auth.sign_in_with_oauth(options)
+        except Exception as e:
+            raise SupabaseLoginException(
+                f"Failed Logging in to Supabase using oauth provider {provider}: {e}"
+            )

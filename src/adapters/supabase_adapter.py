@@ -10,6 +10,8 @@ class SupabaseRepositoryAdapter(UserRepository):
     def __init__(self):
         url = os.environ.get("SUPABASE_URL")
         key = os.environ.get("SUPABASE_API_KEY")
+        if not url or not key:
+            raise ValueError("SUPABASE_URL and SUPABASE_API_KEY must be set")
         self.client = create_client(url, key)
 
     def login_with_email_and_password(self, email: str, password: str):
@@ -22,7 +24,9 @@ class SupabaseRepositoryAdapter(UserRepository):
                 "password": password
             })
         except Exception as e:
-            raise SupabaseLoginException(f"Failed Loging in to Supabase using email and password: {e}")
+            raise SupabaseLoginException(
+                f"Failed logging in to Supabase using email and password: {e}"
+            )
 
     def login_with_phone_and_password(self, phone: str, password: str):
         """
@@ -34,7 +38,9 @@ class SupabaseRepositoryAdapter(UserRepository):
                 "password": password
             })
         except Exception as e:
-            raise SupabaseLoginException(f"Failed Loging in to Supabase using phone and password: {e}")
+            raise SupabaseLoginException(
+                f"Failed logging in to Supabase using phone and password: {e}"
+            )
 
 
     def login_with_id_token(self, provider: str, token: str):

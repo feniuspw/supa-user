@@ -7,5 +7,9 @@ class UserRepository(ABC):
         pass
 
     @abstractmethod
+    def login_with_phone_and_password(self, phone: str, password: str):
+        pass
+
+    @abstractmethod
     def login_with_id_token(self, provider: str, token: str):
         pass

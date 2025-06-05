@@ -34,7 +34,7 @@ SupaUser simplifies the authentication process by isolating user management into
 
 ## Running Tests 🧪
 
-Use `pytest` to execute the unit tests. The environment variables required by the
+Use `python -m pytest` to execute the unit tests. The environment variables required by the
 application need to be present, and `PYTHONPATH` must include the `src` folder.
 
 ```bash
@@ -42,7 +42,7 @@ export PYTHONPATH=src
 export SUPABASE_URL=http://example.com
 export SUPABASE_API_KEY=dummy
 export SSO_REDIRECT_TO=http://localhost
-pytest
+python -m pytest
 ```
 
 

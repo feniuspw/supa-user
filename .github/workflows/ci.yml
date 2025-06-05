@@ -20,4 +20,4 @@ jobs:
           SUPABASE_URL: https://example.com
           SUPABASE_API_KEY: dummy
           SSO_REDIRECT_TO: http://localhost
-        run: pytest --cov=src
+        run: python -m pytest --cov=src

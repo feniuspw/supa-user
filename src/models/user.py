@@ -1,4 +1,5 @@
 from typing import Optional
+from enum import Enum
 
 from pydantic import BaseModel, EmailStr
 
@@ -11,8 +12,15 @@ class UserPhonePasswordAuth(BaseModel):
     phone: str
     password: str
 
+class OAuthProvider(str, Enum):
+    """Supported OAuth providers for SSO."""
+
+    GOOGLE = "google"
+    MICROSOFT = "azure"
+
+
 class UserSSOAuth(BaseModel):
-    provider: str
+    provider: OAuthProvider
     redirect_to: Optional[str] = None
 
 

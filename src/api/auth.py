@@ -39,7 +39,11 @@ async def login_with_email_and_password(
         )
 
 
-@router.post("/login-with-sso", summary="Login with Gmail SSO", response_model=SSOLoginResponse)
+@router.post(
+    "/login-with-sso",
+    summary="Login with Google or Microsoft SSO",
+    response_model=SSOLoginResponse,
+)
 async def login_with_sso(
     credentials: UserSSOAuth,
     service: AuthService = Depends(get_auth_service),

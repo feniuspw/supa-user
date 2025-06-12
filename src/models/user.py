@@ -17,6 +17,7 @@ class OAuthProvider(str, Enum):
 
     GOOGLE = "google"
     MICROSOFT = "azure"
+    GITHUB = "github"
 
 
 class UserSSOAuth(BaseModel):

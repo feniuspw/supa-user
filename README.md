@@ -21,7 +21,7 @@ SupaUser simplifies the authentication process by isolating user management into
 
 2. **Create your .env based on .env.example:**
    - Defina `SUPABASE_URL` e `SUPABASE_API_KEY`.
-   - Opcionalmente defina `SSO_REDIRECT_TO` para o callback do SSO com Google ou Microsoft.
+   - Opcionalmente defina `SSO_REDIRECT_TO` para o callback do SSO com Google, Microsoft ou GitHub.
 
 3. **Run SupaUser with docker:**
    ```bash
@@ -30,7 +30,7 @@ SupaUser simplifies the authentication process by isolating user management into
 
 ## Endpoints
 - `POST /login-with-email-and-password` – Autenticação tradicional.
-- `POST /login-with-sso` – Retorna a URL de redirecionamento para login com Google ou Microsoft.
+- `POST /login-with-sso` – Retorna a URL de redirecionamento para login com Google, Microsoft ou GitHub.
 
 ## Running Tests 🧪
 

@@ -59,6 +59,14 @@ def test_login_with_sso_microsoft_success(mocker):
     assert response.json() == {"redirect_url": "http://example.com"}
 
 
+def test_login_with_sso_github_success(mocker):
+    mocker.patch.object(auth_module.AuthService, "login_with_sso", return_value={"url": "http://example.com"})
+    data = {"provider": "github", "redirect_to": "http://localhost"}
+    response = client.post("/login-with-sso", json=data)
+    assert response.status_code == 200
+    assert response.json() == {"redirect_url": "http://example.com"}
+
+
 def test_login_with_sso_failure(mocker):
     mocker.patch.object(auth_module.AuthService, "login_with_sso", side_effect=Exception("fail"))
     data = {"provider": "google", "redirect_to": "http://localhost"}
